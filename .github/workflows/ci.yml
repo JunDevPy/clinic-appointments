@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ master, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   lint:
@@ -15,16 +15,25 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.12'
+    - name: Cache pip
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install black isort flake8
+        pip install black isort flake8 safety
         pip install -r requirements.txt
     - name: Run linting
       run: |
         black --check .
         isort --check-only .
         flake8 .
+    - name: Check dependencies for vulnerabilities
+      run: safety check
 
   test:
     runs-on: ubuntu-latest
@@ -35,10 +44,19 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.12'
+    - name: Cache pip
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest
+        pip install pytest pytest-cov
         pip install -r requirements.txt
     - name: Run tests
-      run: pytest
+      run: pytest --cov=.
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
