@@ -2,14 +2,17 @@
 CRUD операции для работы с базой данных
 """
 
-from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm import Session
+
+from api.exceptions import AppointmentConflictError, AppointmentNotFoundError
 from api.models import Appointment
 from api.schemas import AppointmentCreate
-from api.exceptions import AppointmentConflictError, AppointmentNotFoundError
 
 
-def create_appointment(db: Session, appointment: AppointmentCreate) -> Appointment:
+def create_appointment(
+    db: Session, appointment: AppointmentCreate  # noqa: E501  # noqa: E501
+) -> Appointment:  # noqa: E501
     """Создать новую запись на прием"""
     db_appointment = Appointment(
         patient_name=appointment.patient_name,
@@ -25,16 +28,21 @@ def create_appointment(db: Session, appointment: AppointmentCreate) -> Appointme
     except IntegrityError:
         db.rollback()
         raise AppointmentConflictError(
-            f"Врач с ID {appointment.doctor_id} уже занят в {appointment.start_time}"
+            f"Врач с ID {appointment.doctor_id} "
+            f"уже занят в {appointment.start_time}"
         )
 
 
 def get_appointment(db: Session, appointment_id: int) -> Appointment:
     """Получить запись по ID"""
-    appointment = db.query(Appointment).filter(Appointment.id == appointment_id).first()
+    appointment = (
+        db.query(Appointment).filter(Appointment.id == appointment_id).first()
+    )  # noqa: E501
 
     if not appointment:
-        raise AppointmentNotFoundError(f"Запись с ID {appointment_id} не найдена")
+        raise AppointmentNotFoundError(
+            f"Запись с ID {appointment_id} не найдена"
+        )  # noqa: E501
 
     return appointment
 

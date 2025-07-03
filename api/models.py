@@ -1,7 +1,9 @@
 # Модели данных (Appointment)
-from sqlalchemy import Column, Integer, String, DateTime, UniqueConstraint
-from .database import Base
 from datetime import datetime, timezone
+
+from sqlalchemy import Column, DateTime, Integer, String, UniqueConstraint
+
+from .database import Base
 
 
 class Appointment(Base):

@@ -2,17 +2,23 @@
 Юнит-тесты для моделей
 """
 
+from datetime import UTC, datetime
+
 import pytest
-from datetime import datetime, UTC
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from api.models import Base, Appointment
+
+from api.models import Appointment, Base
 
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test_models.db"
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
 )
-TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+TestingSessionLocal = sessionmaker(
+    autocommit=False,  # noqa: E501
+    autoflush=False,  # noqa: E501
+    bind=engine,  # noqa: E501
+)
 
 Base.metadata.create_all(bind=engine)
 

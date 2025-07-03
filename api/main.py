@@ -3,15 +3,16 @@
 """
 
 from datetime import datetime
-from fastapi import FastAPI, Depends
+
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
+from api.config import settings
+from api.crud import create_appointment, get_appointment
 from api.database import engine, get_db
 from api.models import Base
 from api.schemas import AppointmentCreate, AppointmentResponse, HealthResponse
-from api.crud import create_appointment, get_appointment
-from api.config import settings
 
 # Создание таблиц
 Base.metadata.create_all(bind=engine)
@@ -36,8 +37,10 @@ app.add_middleware(
 async def health_check():
     """Проверка здоровья сервиса"""
     return HealthResponse(
-        status="healthy", message="Service is running", timestamp=datetime.now()
-    )
+        status="healthy",  # noqa: E501
+        message="Service is running",  # noqa: E501
+        timestamp=datetime.now(),  # noqa: E501
+    )  # noqa: E501
 
 
 @app.post("/appointments", response_model=AppointmentResponse, status_code=201)
@@ -49,7 +52,9 @@ async def create_appointment_endpoint(
 
 
 @app.get("/appointments/{appointment_id}", response_model=AppointmentResponse)
-async def get_appointment_endpoint(appointment_id: int, db: Session = Depends(get_db)):
+async def get_appointment_endpoint(
+    appointment_id: int, db: Session = Depends(get_db)  # noqa: E501
+):  # noqa: E501
     """Получить запись по ID"""
     return get_appointment(db=db, appointment_id=appointment_id)
 

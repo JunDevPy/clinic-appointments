@@ -1,8 +1,10 @@
 # Аутентификация
+from datetime import datetime, timedelta
+
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from jose import jwt, JWTError
-from datetime import datetime, timedelta
+from jose import JWTError, jwt
+
 from api import config
 
 SECRET_KEY = config.settings.SECRET_KEY  # Добавьте в config.py
