@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 
 
 class Appointment(Base):
-    """ Модель данных для записи на прием """
+    """Модель данных для записи на прием"""
 
     __tablename__ = "appointments"
 
@@ -16,5 +16,5 @@ class Appointment(Base):
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
     __table_args__ = (
-        UniqueConstraint('doctor_id', 'start_time', name='_doctor_time_uc'),
+        UniqueConstraint("doctor_id", "start_time", name="_doctor_time_uc"),
     )

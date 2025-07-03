@@ -1,6 +1,7 @@
 """
 CRUD операции для работы с базой данных
 """
+
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 from api.models import Appointment
@@ -13,7 +14,7 @@ def create_appointment(db: Session, appointment: AppointmentCreate) -> Appointme
     db_appointment = Appointment(
         patient_name=appointment.patient_name,
         doctor_id=appointment.doctor_id,
-        start_time=appointment.start_time
+        start_time=appointment.start_time,
     )
 
     try:
@@ -30,9 +31,7 @@ def create_appointment(db: Session, appointment: AppointmentCreate) -> Appointme
 
 def get_appointment(db: Session, appointment_id: int) -> Appointment:
     """Получить запись по ID"""
-    appointment = db.query(Appointment).filter(
-        Appointment.id == appointment_id
-    ).first()
+    appointment = db.query(Appointment).filter(Appointment.id == appointment_id).first()
 
     if not appointment:
         raise AppointmentNotFoundError(f"Запись с ID {appointment_id} не найдена")

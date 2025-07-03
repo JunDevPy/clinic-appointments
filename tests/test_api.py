@@ -1,6 +1,7 @@
 """
 Интеграционные тесты API
 """
+
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -9,7 +10,9 @@ from api.database import get_db, Base
 
 # Создаем временную базу для тестов
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
-engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
+engine = create_engine(
+    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+)
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base.metadata.create_all(bind=engine)
@@ -42,7 +45,7 @@ def test_create_appointment():
     appointment_data = {
         "patient_name": "Иван Иванов",
         "doctor_id": 1,
-        "start_time": "2025-07-10T10:00:00"
+        "start_time": "2025-07-10T10:00:00",
     }
     response = client.post("/appointments", json=appointment_data)
     assert response.status_code == 201
@@ -58,7 +61,7 @@ def test_get_appointment():
     appointment_data = {
         "patient_name": "Петр Петров",
         "doctor_id": 2,
-        "start_time": "2025-07-10T11:00:00"
+        "start_time": "2025-07-10T11:00:00",
     }
     create_response = client.post("/appointments", json=appointment_data)
     appointment_id = create_response.json()["id"]
@@ -76,7 +79,7 @@ def test_appointment_conflict():
     appointment_data = {
         "patient_name": "Анна Иванова",
         "doctor_id": 3,
-        "start_time": "2025-07-10T12:00:00"
+        "start_time": "2025-07-10T12:00:00",
     }
 
     # Первая запись должна пройти
