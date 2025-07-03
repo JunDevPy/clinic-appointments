@@ -1,14 +1,11 @@
 """
 Интеграционные тесты API
 """
-import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from api.main import app
 from api.database import get_db, Base
-import tempfile
-import os
 
 # Создаем временную базу для тестов
 SQLALCHEMY_DATABASE_URL = "sqlite:///./test.db"
