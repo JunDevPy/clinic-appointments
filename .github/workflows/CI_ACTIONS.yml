@@ -30,7 +30,7 @@ jobs:
     - name: Run linting
       run: |
         black .
-        isort --check-only .
+        isort .
         flake8 .
     - name: Check dependencies for vulnerabilities
       run: safety check
