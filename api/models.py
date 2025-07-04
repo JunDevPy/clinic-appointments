@@ -1,5 +1,4 @@
 # Модели данных (Appointment)
-from datetime import datetime, timezone
 
 from sqlalchemy import Column, DateTime, Integer, String, UniqueConstraint
 
