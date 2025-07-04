@@ -62,6 +62,7 @@ def test_create_appointment():
 
 def test_get_appointment():
     """Тест получения записи"""
+
     # Сначала создаем запись
     appointment_data = {
         "patient_name": "Петр Петров",
@@ -81,6 +82,7 @@ def test_get_appointment():
 
 def test_appointment_conflict():
     """Тест конфликта при создании записи (один врач в одно время)"""
+
     appointment_data = {
         "patient_name": "Анна Иванова",
         "doctor_id": 3,
@@ -99,5 +101,6 @@ def test_appointment_conflict():
 
 def test_get_nonexistent_appointment():
     """Тест получения несуществующей записи"""
+
     response = client.get("/appointments/999999")
     assert response.status_code == 404
