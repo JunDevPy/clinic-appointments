@@ -14,8 +14,8 @@ from api.database import engine, get_db
 from api.models import Base
 from api.schemas import AppointmentCreate, AppointmentResponse, HealthResponse
 
-# Создание таблиц
-Base.metadata.create_all(bind=engine)
+# # Создание таблиц
+# Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Clinic Appointments API",
