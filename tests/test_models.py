@@ -47,7 +47,6 @@ def test_appointment_unique_constraint():
     """Тест уникального ограничения doctor_id + start_time"""
     db = TestingSessionLocal()
 
-    # start_time = datetime(2025, 7, 10, 14, 0, 0)
     start_time = datetime.now(UTC)
 
     # Первая запись
