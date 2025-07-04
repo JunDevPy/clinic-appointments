@@ -14,7 +14,7 @@ from api.database import engine, get_db
 from api.models import Base
 from api.schemas import AppointmentCreate, AppointmentResponse, HealthResponse
 
-# # Создание таблиц
+# # Создание таблиц закоментил в связи с ошибками в тестах перенес в события
 # Base.metadata.create_all(bind=engine)
 
 app = FastAPI(

@@ -7,7 +7,7 @@ from jose import JWTError, jwt
 
 from api import config
 
-SECRET_KEY = config.settings.SECRET_KEY  # Добавьте в config.py
+SECRET_KEY = config.settings.SECRET_KEY  # !!! Проверить есть ли он !!!
 ALGORITHM = "HS256"
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
