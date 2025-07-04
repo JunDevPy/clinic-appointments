@@ -50,7 +50,7 @@ async def health_check():
 
 @app.post("/appointments", response_model=AppointmentResponse, status_code=201)
 async def create_appointment_endpoint(
-        appointment: AppointmentCreate, db: Session = Depends(get_db)
+    appointment: AppointmentCreate, db: Session = Depends(get_db)
 ):
     """Создать новую запись на прием"""
     return create_appointment(db=db, appointment=appointment)
@@ -58,7 +58,7 @@ async def create_appointment_endpoint(
 
 @app.get("/appointments/{appointment_id}", response_model=AppointmentResponse)
 async def get_appointment_endpoint(
-        appointment_id: int, db: Session = Depends(get_db)  # noqa: E501
+    appointment_id: int, db: Session = Depends(get_db)  # noqa: E501
 ):  # noqa: E501
     """Получить запись по ID"""
     return get_appointment(db=db, appointment_id=appointment_id)

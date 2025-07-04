@@ -25,7 +25,6 @@ class Settings(BaseSettings):
     # SECRET_KEY: str
     SECRET_KEY: str = "test_secret_key"
 
-
     @field_validator("ALLOWED_ORIGINS")
     @classmethod
     def parse_allowed_origins(cls, v: str) -> List[str]:
