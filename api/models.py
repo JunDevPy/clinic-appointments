@@ -16,6 +16,7 @@ class Appointment(Base):
     doctor_id = Column(Integer, index=True, nullable=False)
     start_time = Column(DateTime, nullable=False)
     created_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))
 
     __table_args__ = (
         UniqueConstraint("doctor_id", "start_time", name="_doctor_time_uc"),
