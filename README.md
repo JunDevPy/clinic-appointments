@@ -1,4 +1,4 @@
-# Clinic Appointments
+# Тестовое задание - Clinic Appointments 
 
 Микросервис на FastAPI для записи пациентов к врачам (PostgreSQL).
 
@@ -15,12 +15,12 @@ curl http://localhost:8000/health
 
 ## Команды Makefile
 
-- make lint — проверка стиля (black, isort, flake8)
-- make test — запуск тестов (pytest)
-- make up — поднять сервисы (docker-compose)
-- make down — остановить сервисы
-- make migrate — создать схемы в БД
-- make clean — удалить контейнеры и очищает docker
+- `make lint` — проверка стиля (black, isort, flake8)
+- `make test` — запуск тестов (pytest)
+- `make up` — поднять сервисы (docker-compose)
+- `make down` — остановить сервисы
+- `make migrate` — создать схемы в БД
+- `make clean` — удалить контейнеры и очищает docker
 
 
 ## API
