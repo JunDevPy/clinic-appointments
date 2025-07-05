@@ -76,7 +76,7 @@ async def main():
     bot = TelegramBot(
         token="YOUR_BOT_TOKEN",  # noqa: E501
         recommendation_system=recommendation_system
-    )
+    )  # noqa: E501
     await bot.dp.start_polling(bot.bot)
 
 
