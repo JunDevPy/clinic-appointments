@@ -59,7 +59,7 @@ class DoctorRecommendationSystem:
 
 
 class TelegramBot:
-    def __init__(self, token: str, recommendation_system: DoctorRecommendationSystem):
+    def __init__(self, token: str, recommendation_system: DoctorRecommendationSystem):  # noqa: E501
         self.bot = Bot(token=token)
         self.dp = Dispatcher()
         self.recommendation_system = recommendation_system
@@ -91,12 +91,12 @@ class TelegramBot:
 
 
 async def main():
-    recommendation_system = DoctorRecommendationSystem(openai_key=AI_TOKEN)
-    bot = TelegramBot(
-        token=BOT_TOKEN,
-        recommendation_system=recommendation_system
-    )
-    await bot.dp.start_polling(bot.bot)
+    recommendation_system = DoctorRecommendationSystem(openai_key=AI_TOKEN)  # noqa: E501
+    bot = TelegramBot(  # noqa: E501
+        token=BOT_TOKEN,  # noqa: E501
+        recommendation_system=recommendation_system  # noqa: E501
+    )  # noqa: E501
+    await bot.dp.start_polling(bot.bot)  # noqa: E501
 
 
 if __name__ == "__main__":
