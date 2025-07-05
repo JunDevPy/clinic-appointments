@@ -38,12 +38,12 @@ class DoctorRecommendationSystem:
 
     def recommend_doctor(self, symptoms_text: str) -> str:
         classification = self.classify_symptoms(symptoms_text)
-        best_specialty = max(
-            classification["labels"],
-            key=lambda l: classification["scores"][
-                classification["labels"].index(l)
-            ]
-        )
+        best_specialty = max(  # noqa: E501
+            classification["labels"],  # noqa: E501
+            key=lambda l: classification["scores"][  # noqa: E501
+                classification["labels"].index(l)  # noqa: E501
+            ]  # noqa: E501
+        )  # noqa: E501
         return self.find_doctor_by_specialty(best_specialty)
 
     @staticmethod
@@ -55,7 +55,7 @@ class DoctorRecommendationSystem:
             "Неврология": "Доктор Козлов",
             "Кардиология": "Доктор Васильева",
         }
-        return doctors.get(specialty, "Специалист не найден")
+        return doctors.get(specialty, "Специалист не найден")  # noqa: E501
 
 
 class TelegramBot:
@@ -82,12 +82,12 @@ class TelegramBot:
             return
 
         loop = asyncio.get_running_loop()
-        doctor = await loop.run_in_executor(
-            None,
-            self.recommendation_system.recommend_doctor,
-            message.text
-        )
-        await message.answer(f"Рекомендуемый врач: {doctor}")
+        doctor = await loop.run_in_executor(  # noqa: E501
+            None,  # noqa: E501
+            self.recommendation_system.recommend_doctor,  # noqa: E501
+            message.text  # noqa: E501
+        )  # noqa: E501
+        await message.answer(f"Рекомендуемый врач: {doctor}")  # noqa: E501
 
 
 async def main():
