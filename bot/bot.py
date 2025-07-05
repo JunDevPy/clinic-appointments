@@ -12,8 +12,8 @@ class DoctorRecommendationSystem:
 
     def classify_symptoms(self, symptoms_text):
         specialties = [
-            "Терапия", "Хирургия", "Педиатрия",
-            "Неврология", "Кардиология"
+            "Терапия", "Хирургия", "Педиатрия",  # noqa: E501
+            "Неврология", "Кардиология"  # noqa: E501
         ]
         result = self.symptoms_classifier(
             symptoms_text,
@@ -68,7 +68,7 @@ class TelegramBot:
             self.recommendation_system.recommend_doctor,
             message.text
         )
-        await message.answer(f"Рекомендуемый врач: {doctor}")
+        await message.answer(f"Рекомендуемый врач: {doctor}")  # noqa: E501
 
 
 async def main():

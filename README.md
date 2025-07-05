@@ -52,23 +52,39 @@ curl -X POST http://localhost:8000/appointments \
 ## Структура проекта
 ```
 .
-├── .env.example
+├── .env.example                              # Пример файла с переменными для деплоя
 ├── Dockerfile
 ├── docker-compose.yml
-├── Makefile
-├── requirements.txt
+├── Makefile                                  # Быстрые команды Make
+├── LICENSE                                   # Описание лицензии
+├── README.md                                 # Этот файл
+├── requirements.txt                          # Зависимости
+├── bot/
+│   ├── bot.py                                # stub-пакет для Telegramm бота
+│   ├── this_bot_dialog_from_example.md       # Пример диалога с Telegramm ботом
+├── docs/
+│   ├── activity-diagramm.md                  # Activity-диаграмма описание
+│   ├── activity-diagramm.png                 # Activity-диаграмма рисунок PNG
+│   ├── answers.txt                           # Ответы на Короткий опросник из ТЗ
+│   ├── architecture-schema.md                # Архитектурная схема
+│   ├── architecture-schema.png               # Архитектурная схема рисунок PNG
+│   ├── business-process.md                   # Описание бизнес-процесса 
+│   ├── business-process.png                  # Описание бизнес-процесса рисунок PNG
+│   ├── er-diagramm.md                        # ER-диаграмма базы данных
 ├── api/
-│   ├── main.py       # точка входа
-│   ├── models.py     # ORM-модель Appointment
-│   ├── schemas.py    # Pydantic-схемы
-│   ├── crud.py       # CRUD-операции
-│   ├── database.py   # подключение к БД
-│   └── exceptions.py
+│   ├── main.py                               # точка входа FastAPI
+│   ├── auth.py                               # Авторизация JWT
+│   ├── config.py                             # Конфиг для чтения env
+│   ├── models.py                             # ORM-модель Appointment
+│   ├── schemas.py                            # Pydantic-схемы
+│   ├── crud.py                               # CRUD-операции
+│   ├── database.py                           # подключение к БД
+│   └── exceptions.py                         # Обработка исключений
 ├── tests/
-│   ├── test_models.py
-│   └── test_api.py
+│   ├── test_models.py                        # Тесты для моделей
+│   └── test_api.py                           # Тесты для Эндпоинтов
 └── .github/
-    └── workflows/ci.yml
+    └── workflows/ci.yml                      # CI\CD GitHub Actions
 ```
 
 ## CI/CD
@@ -78,4 +94,6 @@ _**GitHub Actions запускает две задачи:**_
 `test (pytest)` \
 
 **В обоих шагах требуется ноль ошибок, после этого пушим контейнер (при необходимости).**
+
+
 
