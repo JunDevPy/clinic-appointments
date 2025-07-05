@@ -40,8 +40,8 @@ class DoctorRecommendationSystem:
         classification = self.classify_symptoms(symptoms_text)
         best_specialty = max(  # noqa: E501
             classification["labels"],  # noqa: E501
-            key=lambda l: classification["scores"][  # noqa: E501
-                classification["labels"].index(l)  # noqa: E501
+            key=lambda item: classification["scores"][  # noqa: E501
+                classification["labels"].index(item)  # noqa: E501
             ]  # noqa: E501
         )  # noqa: E501
         return self.find_doctor_by_specialty(best_specialty)
