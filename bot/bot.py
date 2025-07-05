@@ -19,7 +19,7 @@ class DoctorRecommendationSystem:
             symptoms_text,
             specialties,
             multi_label=True
-        )
+        )  # noqa: E501
         return result
 
     def recommend_doctor(self, symptoms_text):
@@ -74,7 +74,7 @@ class TelegramBot:
 async def main():
     recommendation_system = DoctorRecommendationSystem(openai_key="YOUR_OPENAI_KEY")
     bot = TelegramBot(
-        token="YOUR_BOT_TOKEN",
+        token="YOUR_BOT_TOKEN",  # noqa: E501
         recommendation_system=recommendation_system
     )
     await bot.dp.start_polling(bot.bot)
