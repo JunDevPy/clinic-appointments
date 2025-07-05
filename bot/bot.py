@@ -72,12 +72,12 @@ class TelegramBot:
 
 
 async def main():
-    recommendation_system = DoctorRecommendationSystem(openai_key="YOUR_OPENAI_KEY")
-    bot = TelegramBot(
+    recommendation_system = DoctorRecommendationSystem(openai_key="YOUR_OPENAI_KEY")  # noqa: E501
+    bot = TelegramBot(  # noqa: E501
         token="YOUR_BOT_TOKEN",  # noqa: E501
-        recommendation_system=recommendation_system
+        recommendation_system=recommendation_system  # noqa: E501
     )  # noqa: E501
-    await bot.dp.start_polling(bot.bot)
+    await bot.dp.start_polling(bot.bot)  # noqa: E501
 
 
 if __name__ == "__main__":
