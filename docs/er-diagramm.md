@@ -8,7 +8,7 @@ ER-диаграмма базы данных:
 | start_time    | datetime   | Время начала приема           |
 | created_at    | datetime   | Дата создания записи          |
 | updated_at    | datetime   | Дата последнего обновления    |
-\
+
 
 Текстовое описание структуры БД:
 - Таблица `appointments`
