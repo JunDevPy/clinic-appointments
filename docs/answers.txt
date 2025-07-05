@@ -1,0 +1,25 @@
+• Самооценка 0-10:
+    Python - 7
+    FastAPI/Flask - 5
+    Docker/Compose - 7
+    GitHub Actions - 5
+    PGSQL - 7
+    «код с ИИ» - 7
+    встраивание решений в бизнес-процессы
+
+• Английский?
+    Частично ДА (но с переводчиком).
+
+• Как трекаете задачи?
+
+    Obsidian с плагинами
+    - obsidian-projects,
+    - Calendar,
+    - Commander
+    - DataView
+    - obsidian-kanban
+    - obsidian-kindle-plugin
+    - obsidian-markmind
+    - obsidian-spaced-repetition
+    - obsidian-tasks-plugin
+    - table-editor-obsidian
